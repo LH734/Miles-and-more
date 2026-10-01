@@ -45,6 +45,13 @@ Reihenfolge (Platzhalter: `{MONAT}` `{JAHR}` `{AIRLINE}` `{ZIEL}` `{MEILEN}`):
 6. **Barpreise** (1 Suche je übernommenem Angebot): `{VON} {NACH} Hin- und Rückflug {KLASSE} {REISEMONAT} {JAHR} Preis`.
    Ein „ab“-Preis ohne Klasse und Reiseart zählt nicht, dann `cashPrice: null`.
 
+**Wenn eine Seite gesperrt ist** (HTTP 403, Bot-Schutz): Versuche nicht, die Sperre zu umgehen (kein anderer User-Agent, keine Umwege).
+Melde die Quelle mit `status: "error"` und der Meldung „HTTP 403 (Bot-Schutz)“ und arbeite weiter:
+- Lies die Blogs direkt und nutze die Suchen aus Schritt 2–4. **Hör nicht früh auf.** Das Suchbudget ist dafür da.
+- Nennt ein Blog für ein Angebot ein ausdrückliches, noch nicht abgelaufenes Buchungs-Enddatum (z. B. „buchbar bis 31.10.2026“),
+  übernimm es nach Blog-Regel (b) mit `bookingPeriod.toExplicit: true`, auch ohne Primärbestätigung.
+- Erfasse dabei **jedes** genannte Ziel mit Airline, Klasse und Meilen. Fehlende Zuzahlung bleibt `null`, das ist erlaubt.
+
 Erfahrungswerte:
 - Nach etwa 25 Suchen wiederholen sich die Ergebnisse. Brich dann ab.
 - **Suchzusammenfassungen vermischen Monate.** Sie stellen zum Beispiel September-Angebote als „Oktober“ dar.
@@ -126,6 +133,11 @@ Regeln für die Felder:
   Melde deshalb jede Quelle, die du versucht hast. Liefert eine Quelle `ok`, gib **alle** ihre aktuellen Angebote an,
   auch die unveränderten aus dem Bestand. Was fehlt, gilt als entfernt.
 - `sourceId` muss eine ID aus `data/sources.json` sein.
+- `status: "ok"` heißt: Die Seite wurde gelesen, auch wenn daraus nichts übernommen wurde. `error` nur, wenn der Abruf scheiterte.
+- `origin`: ein Flughafen (`iata`, `city`, `country`). Nennt die Quelle nur eine Abflugregion, zum Beispiel
+  „ab allen deutschen Eurowings-Flughäfen“ oder „ab allen polnischen Flughäfen“, dann ohne `iata`:
+  `{ "iata": null, "label": "alle Eurowings-Flughäfen in Deutschland", "country": "DE" }`. Erfinde keine Flughäfen.
+  Den Barpreis suchst du dann für die gängigste Strecke (z. B. ab FRA) und nennst das in `cashPrice.source.name`.
 - `cabin`: `economy`, `premium_economy`, `business` oder `first`. `tripType`: `roundtrip` oder `oneway`.
 - `destination.region`: `Deutschland`, `Europa`, `Nordafrika`, `Naher Osten`, `Afrika`, `Nordamerika`,
   `Mittelamerika & Karibik`, `Südamerika`, `Asien`, `Indischer Subkontinent` oder `Ozeanien`.

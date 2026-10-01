@@ -24,6 +24,14 @@ test('Datenmodell kennt spätere Kategorien', () => {
   assert.ok(validateOffer(offer({ category: 'kreuzfahrt' })).some((e) => e.includes('category')));
 });
 
+test('Abflugregion statt einzelnem Flughafen ist gültig, ohne beides nicht', () => {
+  const region = offer({ origin: { iata: null, label: 'alle Eurowings-Flughäfen in Deutschland', country: 'DE' } });
+  assert.deepEqual(validateOffer(region), []);
+  assert.equal(startsAbroad(region), false);
+  assert.match(offerId(region), /:de\*:/);
+  assert.ok(validateOffer(offer({ origin: { label: 'irgendwo' } })).some((e) => e.includes('origin')));
+});
+
 test('Blog-Regel: nur Blog, unbestätigt, ohne eindeutiges Enddatum → verwerfen', () => {
   const o = blogOnly({ bookingPeriod: { from: '2026-10-01', to: '2026-10-31', toExplicit: false } });
   assert.equal(blogRuleVerdict(o, TODAY).keep, false);

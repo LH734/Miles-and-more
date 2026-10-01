@@ -124,6 +124,18 @@ jobs:
           node scripts/ai-run-end.mjs | tee .ai-run/searches-compare.txt
           # Der Vergleichslauf darf keine Daten ändern
           git checkout -- data config
+          # Vergleich als Datei im Repo ablegen
+          if [ -f data/incoming/compare.json ] && [ -f data/incoming/update.json ]; then
+            {
+              echo "# Letzter Modellvergleich ($(date -u +%F))"
+              echo
+              node scripts/compare.mjs data/incoming/update.json data/incoming/compare.json
+              echo
+              echo "Vergleichslauf: $(head -1 .ai-run/searches-compare.txt), $(sed -n 2p .ai-run/searches-compare.txt)"
+            } > docs/modellvergleich-letzter-lauf.md
+            git add docs/modellvergleich-letzter-lauf.md
+            git diff --cached --quiet || { git commit -m "Modellvergleich: $(date -u +%F)" && git push; }
+          fi
 
       - name: Zusammenfassung
         if: always()

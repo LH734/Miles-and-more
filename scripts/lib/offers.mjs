@@ -19,7 +19,7 @@ export const REGIONS = [
 
 export function offerId(o) {
   const parts = [
-    o.sourceId, o.category, o.airline?.code, o.origin?.iata, o.destination?.iata,
+    o.sourceId, o.category, o.airline?.code, o.origin?.iata ?? `${o.origin?.country ?? '-'}*`, o.destination?.iata,
     o.cabin, o.tripType, o.bookingPeriod?.to ?? 'offen',
   ];
   return parts.map((p) => String(p ?? '-').toLowerCase()).join(':');
@@ -62,7 +62,8 @@ export function validateOffer(o) {
 
   if (o.category === 'flight') {
     if (!o.airline?.name) errors.push('airline.name fehlt');
-    if (!o.origin?.iata) errors.push('origin.iata fehlt');
+    // Ein Abflughafen (iata) oder eine Abflugregion wie „alle Eurowings-Flughäfen in Deutschland“ (label + country)
+    if (!o.origin?.iata && !(o.origin?.label && o.origin?.country)) errors.push('origin.iata oder origin.label+country fehlt');
     if (!o.destination?.iata) errors.push('destination.iata fehlt');
     if (o.destination?.region && !REGIONS.includes(o.destination.region)) {
       errors.push(`destination.region unbekannt: ${o.destination.region}`);

@@ -11,7 +11,7 @@ Alle Daten liegen als JSON in `data/`. Die Seite (`_site/data.json`) wird daraus
 | `offerType` | – | `meilenschnaeppchen`, `award-favorit`, `aktion`, `standard` |
 | `sourceId` | ja | ID aus `data/sources.json` |
 | `airline` | bei Flug | `{ code, name }` |
-| `origin` / `destination` | bei Flug | `{ iata, city, country (ISO-2), countryName?, region? }` |
+| `origin` / `destination` | bei Flug | `{ iata, city, country (ISO-2), countryName?, region? }`; Abflug alternativ als Region: `{ iata: null, label, country }` |
 | `tripType` | bei Flug | `roundtrip` oder `oneway` |
 | `cabin` | bei Flug | `economy`, `premium_economy`, `business`, `first` |
 | `miles` | ja | Meilenpreis |

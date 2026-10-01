@@ -50,6 +50,10 @@ function money(p) {
   return p.currency === 'EUR' ? eur.format(p.amount) : `${num.format(p.amount)} ${p.currency}`;
 }
 
+// Abflug: einzelner Flughafen oder Abflugregion (z. B. „alle Eurowings-Flughäfen in Deutschland“)
+const originKey = (o) => o.origin.iata ?? `${o.origin.country}*`;
+const originText = (o) => (o.origin.iata ? `${o.origin.city ?? o.origin.iata} (${o.origin.iata})` : o.origin.label);
+
 let DATA = null;
 const sortState = { key: 'relevance', dir: 'desc' };
 
@@ -141,7 +145,7 @@ function uniqueSorted(values, compare = (a, b) => a[1].localeCompare(b[1], 'de')
 
 function fillFilters() {
   const o = DATA.offers;
-  fillSelect('origin', uniqueSorted(o.map((x) => [x.origin.iata, `${x.origin.city ?? x.origin.iata} (${x.origin.iata})${x.startsAbroad ? ' – Ausland' : ''}`])));
+  fillSelect('origin', uniqueSorted(o.map((x) => [originKey(x), `${originText(x)}${x.startsAbroad ? ' – Ausland' : ''}`])));
   fillSelect('region', uniqueSorted(o.map((x) => [x.destination.region, x.destination.region])));
   fillSelect('country', uniqueSorted(o.map((x) => [x.destination.country, x.destination.countryName ?? x.destination.country])));
   fillSelect('cabin', uniqueSorted(o.map((x) => [x.cabin, CABIN[x.cabin] ?? x.cabin]),
@@ -174,7 +178,7 @@ function bindEvents() {
 }
 
 function matches(o, f) {
-  if (f.origin && o.origin.iata !== f.origin) return false;
+  if (f.origin && originKey(o) !== f.origin) return false;
   if (f.abroad === 'de' && o.startsAbroad) return false;
   if (f.abroad === 'abroad' && !o.startsAbroad) return false;
   if (f.region && o.destination.region !== f.region) return false;
@@ -191,7 +195,7 @@ function matches(o, f) {
   }
   if (f.q) {
     const hay = [
-      o.airline.name, o.airline.code, o.origin.iata, o.origin.city, o.destination.iata, o.destination.city,
+      o.airline.name, o.airline.code, o.origin.iata, o.origin.city, o.origin.label, o.destination.iata, o.destination.city,
       o.destination.countryName, o.destination.region, CABIN[o.cabin], OFFER_TYPE[o.offerType], o.notes,
     ].filter(Boolean).join(' ').toLowerCase();
     if (!f.q.toLowerCase().split(/\s+/).filter(Boolean).every((w) => hay.includes(w))) return false;
@@ -259,7 +263,7 @@ function row(o) {
   return el('tr', { class: o.sourceWarning ? 'row-warn' : null },
     el('td', {}, o.airline.name, el('span', { class: 'small' }, OFFER_TYPE[o.offerType] ?? '')),
     el('td', {},
-      `${o.origin.city ?? o.origin.iata} (${o.origin.iata}) → ${o.destination.city ?? o.destination.iata} (${o.destination.iata})`,
+      `${originText(o)} → ${o.destination.city ?? o.destination.iata} (${o.destination.iata})`,
       el('span', { class: 'small' }, [o.destination.countryName, o.destination.region].filter(Boolean).join(' · ')),
       el('span', { class: 'badge' }, TRIP[o.tripType] ?? o.tripType),
       o.startsAbroad ? el('span', { class: 'badge abroad' }, 'Start im Ausland') : null),
