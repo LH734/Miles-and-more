@@ -50,7 +50,19 @@ jobs:
           fi
 
       - name: Claude Code installieren
-        run: npm install -g @anthropic-ai/claude-code
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          # Projektordner als vertrauenswürdig markieren, sonst ignoriert Claude Code
+          # die Projekt-Einstellungen (.claude/settings.json) samt Suchzähler-Hook
+          node -e '
+            const fs = require("fs"), os = require("os"), path = require("path");
+            const file = path.join(os.homedir(), ".claude.json");
+            const cfg = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : {};
+            cfg.projects = cfg.projects || {};
+            cfg.projects[process.cwd()] = { ...(cfg.projects[process.cwd()] || {}), hasTrustDialogAccepted: true };
+            fs.writeFileSync(file, JSON.stringify(cfg, null, 2));
+          '
+          claude --version
 
       - name: Einstellungen lesen
         run: |
@@ -73,7 +85,9 @@ jobs:
             --model "$MODEL" \
             --max-turns 120 \
             --allowedTools "$ALLOWED_TOOLS" \
-            --output-format json > .ai-run/claude-main.json
+            --output-format json > .ai-run/claude-main.json \
+            || { echo "::error::Claude Code ist mit einem Fehler beendet worden:"; cat .ai-run/claude-main.json; exit 1; }
+          node -e "const r=require('./.ai-run/claude-main.json'); console.log('Ergebnis:', r.subtype, '| Runden:', r.num_turns, '| Fehler:', r.is_error)"
           node scripts/ai-run-end.mjs | tee .ai-run/searches-main.txt
 
       - name: Prüfen und Seite testen
@@ -97,7 +111,8 @@ jobs:
             --model "$COMPARE_MODEL" \
             --max-turns 120 \
             --allowedTools "$ALLOWED_TOOLS" \
-            --output-format json > .ai-run/claude-compare.json
+            --output-format json > .ai-run/claude-compare.json \
+            || { echo "::error::Vergleichslauf mit Fehler beendet:"; cat .ai-run/claude-compare.json; }
           node scripts/ai-run-end.mjs | tee .ai-run/searches-compare.txt
           # Der Vergleichslauf darf keine Daten ändern
           git checkout -- data config
