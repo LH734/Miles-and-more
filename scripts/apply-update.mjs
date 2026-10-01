@@ -25,6 +25,7 @@ if (update.awardChart) {
   console.log('Hinweis: awardChart im Lauf enthalten – bitte data/award-chart.json gezielt bearbeiten, nicht automatisch überschrieben.');
 }
 
+const okIds = new Set((update.sources ?? []).filter((x) => x.status === 'ok').map((x) => x.id));
 const { offers, sources, report } = mergeUpdate(
   { offers: offersDoc.offers, sources: sourcesDoc.sources }, update, today,
 );
@@ -60,4 +61,17 @@ console.log(`  abgelehnt (ungültig): ${report.rejected.length}, verworfen (Rege
 for (const r of report.rejected) console.log(`  ✗ ${r.id}: ${r.errors.join('; ')}`);
 for (const s of sources) console.log(`  Quelle ${s.id}: ${s.status}${s.message ? ` – ${s.message}` : ''}`);
 console.log(`  Websuchen in diesem Lauf: ${searchesUsed ?? 'unbekannt'} von max. ${config.ai.maxSearchesPerRun}`);
+// Lücken melden, damit der KI-Lauf mit dem restlichen Suchbudget nacharbeiten kann
+const gaps = offers.filter((o) => okIds.has(o.sourceId) && (!o.cashPrice || !o.travelPeriod));
+if (gaps.length) {
+  console.log(`\nLücken bei ${gaps.length} Angebot(en):`);
+  for (const o of gaps) {
+    const missing = [!o.cashPrice && 'Barpreis', !o.travelPeriod && 'Reisezeitraum'].filter(Boolean).join(', ');
+    console.log(`  • ${o.id}: ${missing} fehlt`);
+  }
+  const left = config.ai.maxSearchesPerRun - (searchesUsed ?? 0);
+  if (left > 0) {
+    console.log(`  → Noch ${left} Websuchen frei: Bitte die Lücken recherchieren, die Ergebnisdatei ergänzen und apply-update erneut ausführen.`);
+  }
+}
 if (report.rejected.length) process.exitCode = 2;

@@ -90,6 +90,17 @@ Erfahrungswerte:
 9. `node scripts/ai-run-end.mjs` ausführen und die Zahl der Websuchen nennen.
 10. Nur bei MODUS `lokal`: `git add data && git commit -m "KI-Lauf: Angebote aktualisiert" && git push`.
 
+## Pflicht-Checkliste vor dem Abschluss
+
+Hake jeden Punkt ab, bevor du den Lauf beendest:
+
+- [ ] Jede Quelle aus `data/sources.json` wurde versucht und mit Status gemeldet.
+- [ ] Für **jedes** übernommene Angebot wurde ein Barpreis gesucht (mindestens 1 Suche je Angebot). Nur wenn nichts Passendes
+      gefunden wurde, bleibt `cashPrice: null`.
+- [ ] Reisezeitraum (`travelPeriod`) ist eingetragen, wenn die Quelle ihn nennt.
+- [ ] Meldet `apply-update` „Lücken“ und sind noch Suchen frei, wurden sie recherchiert und `apply-update` erneut ausgeführt.
+- [ ] Unbenutzte Suchen sind kein Erfolg. Höre erst auf, wenn die Checkliste erfüllt ist oder die Obergrenze erreicht ist.
+
 ## Aufbau der Ergebnisdatei
 
 ```json
