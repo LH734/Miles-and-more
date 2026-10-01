@@ -7,13 +7,13 @@
       "type": "primary",
       "url": "https://www.miles-and-more.com/de/de/program/flight-benefits/award-flight-specials/mileage-bargains.html",
       "status": "error",
-      "lastAttempt": "2026-10-01T08:06:50.969Z",
+      "lastAttempt": "2026-10-01T08:14:00.631Z",
       "lastSuccess": null,
       "robots": {
         "allowed": true,
         "checkedAt": "2026-10-01"
       },
-      "message": "WebFetch lieferte HTTP 403; robots.txt enthält keine Sperre, Seite aber nicht abrufbar."
+      "message": "HTTP 403 (Bot-Schutz)"
     },
     {
       "id": "mm-award-favoriten",
@@ -21,13 +21,13 @@
       "type": "primary",
       "url": "https://www.miles-and-more.com/de/de/program/flight-benefits/award-flights.html",
       "status": "error",
-      "lastAttempt": "2026-10-01T08:06:50.969Z",
+      "lastAttempt": "2026-10-01T08:14:00.631Z",
       "lastSuccess": null,
       "robots": {
         "allowed": true,
         "checkedAt": "2026-10-01"
       },
-      "message": "WebFetch lieferte HTTP 403."
+      "message": "HTTP 403 (Bot-Schutz)"
     },
     {
       "id": "mm-aktionen",
@@ -35,13 +35,13 @@
       "type": "primary",
       "url": "https://www.miles-and-more.com/de/de/program/flight-benefits/award-flight-specials.html",
       "status": "error",
-      "lastAttempt": "2026-10-01T08:06:50.969Z",
+      "lastAttempt": "2026-10-01T08:14:00.631Z",
       "lastSuccess": null,
       "robots": {
         "allowed": true,
         "checkedAt": "2026-10-01"
       },
-      "message": "WebFetch lieferte HTTP 403."
+      "message": "HTTP 403 (Bot-Schutz)"
     },
     {
       "id": "award-chart",
@@ -62,14 +62,14 @@
       "name": "meilenoptimieren.com (nur Hinweisgeber)",
       "type": "blog",
       "url": "https://meilenoptimieren.com/miles-and-more-meilenschnaeppchen-angebote/",
-      "status": "error",
-      "lastAttempt": "2026-10-01T08:06:50.969Z",
-      "lastSuccess": null,
+      "status": "ok",
+      "lastAttempt": "2026-10-01T08:14:00.631Z",
+      "lastSuccess": "2026-10-01T08:14:00.631Z",
       "robots": {
-        "allowed": null,
-        "checkedAt": null
+        "allowed": true,
+        "checkedAt": "2026-10-01"
       },
-      "message": "Seite lesbar, nennt Buchungszeitraum 01.–31.10.2026, aber ohne Abflughäfen und Primärbestätigung; nichts übernommen."
+      "message": null
     },
     {
       "id": "blog-reisetopia",
@@ -77,13 +77,13 @@
       "type": "blog",
       "url": "https://reisetopia.de/meilenschnaeppchen/",
       "status": "error",
-      "lastAttempt": "2026-10-01T08:06:50.969Z",
+      "lastAttempt": "2026-10-01T08:14:00.631Z",
       "lastSuccess": null,
       "robots": {
-        "allowed": null,
-        "checkedAt": null
+        "allowed": true,
+        "checkedAt": "2026-10-01"
       },
-      "message": "WebFetch lieferte HTTP 403."
+      "message": "HTTP 403 (Bot-Schutz)"
     }
   ]
 }

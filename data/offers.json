@@ -1,4 +1,117 @@
 {
   "schemaVersion": 1,
-  "offers": []
+  "offers": [
+    {
+      "category": "flight",
+      "offerType": "meilenschnaeppchen",
+      "sourceId": "blog-meilenoptimieren",
+      "airline": {
+        "code": "LO",
+        "name": "LOT Polish Airlines"
+      },
+      "origin": {
+        "iata": "WAW",
+        "city": "Warschau",
+        "country": "PL"
+      },
+      "destination": {
+        "iata": "JFK",
+        "city": "New York",
+        "country": "US",
+        "countryName": "USA",
+        "region": "Nordamerika"
+      },
+      "tripType": "roundtrip",
+      "cabin": "business",
+      "miles": 61000,
+      "standardMiles": null,
+      "copay": {
+        "amount": 189,
+        "currency": "EUR",
+        "source": {
+          "name": "meilenoptimieren.com",
+          "url": "https://meilenoptimieren.com/miles-and-more-meilenschnaeppchen-angebote/"
+        },
+        "retrievedAt": "2026-10-01"
+      },
+      "cashPrice": null,
+      "bookingPeriod": {
+        "from": "2026-10-01",
+        "to": "2026-10-31",
+        "toExplicit": true
+      },
+      "travelPeriod": null,
+      "sources": [
+        {
+          "type": "blog",
+          "name": "meilenoptimieren.com",
+          "url": "https://meilenoptimieren.com/miles-and-more-meilenschnaeppchen-angebote/",
+          "retrievedAt": "2026-10-01"
+        }
+      ],
+      "verification": {
+        "primaryConfirmed": false
+      },
+      "notes": "Reisezeitraum in den Quellen widersprüchlich, daher offen; Primärquelle gesperrt.",
+      "id": "blog-meilenoptimieren:flight:lo:waw:jfk:business:roundtrip:2026-10-31",
+      "firstSeen": "2026-10-01",
+      "lastConfirmed": "2026-10-01"
+    },
+    {
+      "category": "flight",
+      "offerType": "meilenschnaeppchen",
+      "sourceId": "blog-meilenoptimieren",
+      "airline": {
+        "code": "SN",
+        "name": "Brussels Airlines"
+      },
+      "origin": {
+        "iata": "BRU",
+        "city": "Brüssel",
+        "country": "BE"
+      },
+      "destination": {
+        "iata": "JFK",
+        "city": "New York",
+        "country": "US",
+        "countryName": "USA",
+        "region": "Nordamerika"
+      },
+      "tripType": "roundtrip",
+      "cabin": "business",
+      "miles": 61000,
+      "standardMiles": null,
+      "copay": {
+        "amount": 1603,
+        "currency": "EUR",
+        "source": {
+          "name": "meilenoptimieren.com",
+          "url": "https://meilenoptimieren.com/miles-and-more-meilenschnaeppchen-angebote/"
+        },
+        "retrievedAt": "2026-10-01"
+      },
+      "cashPrice": null,
+      "bookingPeriod": {
+        "from": "2026-10-01",
+        "to": "2026-10-31",
+        "toExplicit": true
+      },
+      "travelPeriod": null,
+      "sources": [
+        {
+          "type": "blog",
+          "name": "meilenoptimieren.com",
+          "url": "https://meilenoptimieren.com/miles-and-more-meilenschnaeppchen-angebote/",
+          "retrievedAt": "2026-10-01"
+        }
+      ],
+      "verification": {
+        "primaryConfirmed": false
+      },
+      "notes": "Reisezeitraum in den Quellen widersprüchlich, daher offen; Primärquelle gesperrt.",
+      "id": "blog-meilenoptimieren:flight:sn:bru:jfk:business:roundtrip:2026-10-31",
+      "firstSeen": "2026-10-01",
+      "lastConfirmed": "2026-10-01"
+    }
+  ]
 }
