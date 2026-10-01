@@ -80,6 +80,10 @@ jobs:
 
       - name: KI-Lauf
         run: |
+          # Zeilenumbrüche/Leerzeichen entfernen (entstehen beim Kopieren aus dem Terminal)
+          CLAUDE_CODE_OAUTH_TOKEN="$(printf %s "$CLAUDE_CODE_OAUTH_TOKEN" | tr -d '[:space:]')"
+          echo "::add-mask::$CLAUDE_CODE_OAUTH_TOKEN"
+          export CLAUDE_CODE_OAUTH_TOKEN
           mkdir -p .ai-run
           claude -p "Führe die Anweisung in ai/ANWEISUNG.md vollständig aus. MODUS: ci. AUSGABE: data/incoming/update.json. Trage als model \"$MODEL\" ein." \
             --model "$MODEL" \
@@ -107,6 +111,10 @@ jobs:
         if: env.COMPARE_MODEL != ''
         continue-on-error: true
         run: |
+          # Zeilenumbrüche/Leerzeichen entfernen (entstehen beim Kopieren aus dem Terminal)
+          CLAUDE_CODE_OAUTH_TOKEN="$(printf %s "$CLAUDE_CODE_OAUTH_TOKEN" | tr -d '[:space:]')"
+          echo "::add-mask::$CLAUDE_CODE_OAUTH_TOKEN"
+          export CLAUDE_CODE_OAUTH_TOKEN
           claude -p "Führe die Schritte 1 bis 5 der Anweisung in ai/ANWEISUNG.md aus. MODUS: ci. AUSGABE: data/incoming/compare.json. Trage als model \"$COMPARE_MODEL\" ein. Führe apply-update NICHT aus und ändere keine anderen Dateien." \
             --model "$COMPARE_MODEL" \
             --max-turns 120 \
