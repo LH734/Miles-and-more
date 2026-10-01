@@ -1,5 +1,6 @@
 # Baut die statische Seite und veröffentlicht sie auf GitHub Pages.
 # Wird von den beiden Läufen aufgerufen und läuft zusätzlich bei jedem Push auf main.
+# Von Hand: Actions → Seite veröffentlichen → Run workflow.
 name: Seite veröffentlichen
 
 on:

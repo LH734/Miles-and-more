@@ -1,5 +1,6 @@
 # Lauf A: täglich, ohne KI. Entfernt abgelaufene Angebote und baut die Seite neu.
 # Verbraucht kein Claude-Kontingent.
+# Kann auch von Hand gestartet werden: Actions → Täglicher Lauf → Run workflow.
 name: Täglicher Lauf
 
 on:
