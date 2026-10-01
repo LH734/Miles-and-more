@@ -1,4 +1,4 @@
-# Erster Lauf am 01.10.2026: Sonnet gegen Haiku
+# Erster Lauf am 01.10.2026: Sonnet, Haiku und Fable
 
 Der erste Lauf fand in einer Cloud-Umgebung statt, in der nur die Websuche erlaubt war. Seiten direkt abzurufen war nicht möglich.
 Beide Ergebnisse wurden durch die festen Regeln aus `scripts/lib` geprüft.
@@ -35,4 +35,8 @@ Abweichende Angaben (0):
   - LOT FRA–LAX: Buchungszeitraum endete am 30.09.2026, also abgelaufen.
   - 3× Eurowings: nur aus Blogs, nicht an der Primärquelle bestätigt, kein eindeutiges Enddatum.
   - Haiku erfand Quellen-IDs, die nicht in `data/sources.json` stehen, und setzte einen Barpreis für FRA–Jeddah als Preis für FRA–Dubai ein.
-- **Fazit:** Sonnet bleibt Standard. Haiku ist für diese Aufgabe zu ungenau.
+- **Fable** (Testlauf „Maximum“, Grenze 80 statt 40 Suchen) brauchte 75 Suchen. Es fand 0 Angebote und verwarf 16 Hinweise begründet.
+  Erfunden hat Fable nichts. Es stellte fest, dass die Oktober-Liste am 01.10. noch in keinem Suchindex stand und dass sich die Primärquelle
+  per Websuche praktisch nicht bestätigen lässt. Das Suchprotokoll steht in `suchstrategie-fable-2026-10-01.md`, die empfohlene
+  Suchstruktur in `ai/ANWEISUNG.md`.
+- **Fazit:** Sonnet bleibt Standard. Haiku ist für diese Aufgabe zu ungenau. Fable lieferte mit der 15-fachen Suchmenge kein besseres Ergebnis als Sonnet, aber die bessere Analyse. Der Engpass ist der fehlende direkte Seitenabruf, nicht das Modell.

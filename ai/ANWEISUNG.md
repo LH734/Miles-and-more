@@ -19,6 +19,41 @@ Arbeite auf Deutsch. Ziel: `data/` auf den aktuellen Stand bringen und dabei das
 - Keine Logins, keine bezahlten Dienste. Dynamische Lufthansa-, SWISS- und Austrian-Preise (nur mit Login sichtbar) gehören nicht dazu.
 - Übernimm keine Texte aus Blogs, nur Fakten und den Link zum Original. `notes` schreibst du in eigenen Worten und kurz.
 
+## Suchstruktur
+
+Grundlage ist der Testlauf vom 01.10.2026 (75 Suchen, Protokoll in `docs/suchstrategie-fable-2026-10-01.md`).
+
+**Immer zuerst direkt abrufen (WebFetch), dann erst suchen.** Die Angebotsliste der Primärquelle wird dynamisch geladen,
+und der Suchindex hinkt Tage bis Wochen hinterher. Per Websuche lassen sich Buchungszeiträume fast nie an der Primärquelle bestätigen.
+Ist eine Seite per WebFetch nicht lesbar, melde die Quelle als `error` und erfinde nichts aus Suchzusammenfassungen.
+
+Reihenfolge (Platzhalter: `{MONAT}` `{JAHR}` `{AIRLINE}` `{ZIEL}` `{MEILEN}`):
+
+1. **Primärquellen direkt** (WebFetch): URLs aus `data/sources.json`. Zur Gegenprüfung auch die Länderseiten
+   (`/at/de/`, `/ch/de/`, `/row/en/`) und die Meilenschnäppchen-Seiten der Airlines (lot.com, brusselsairlines.com, eurowings.com, luxair.lu).
+   Diese nennen oft Buchungszeitraum, Reisezeitraum und Abflughäfen.
+2. **Lage klären** (2–3 Suchen): `Miles & More Meilenschnäppchen {MONAT} {JAHR}`. Prüfe, ob die neue Monatsliste schon
+   in Blogs steht. Mit `allowed_domains: ["miles-and-more.com"]` brachte nur diese Formulierung Primär-Snippets mit Meilenpreisen:
+   `Meilenschnäppchen Reisezeitraum {RZ_VON} {RZ_BIS}`.
+3. **Je Airline** (1–2 Suchen, nur wenn die Liste existiert): `{AIRLINE} Miles and More Meilenschnäppchen {MONAT} {JAHR}`.
+   Nützliche Monatsbeiträge mit Zielen, Meilen, Zuzahlung und Zeiträumen gibt es bei youhavebeenupgraded.boardingarea.com,
+   frankfurtflyer.de und reisetopia.de/deals. Die Beiträge direkt abrufen statt nur Snippets lesen.
+4. **Primärbestätigung** einzelner Blog-Angebote: `Meilenschnäppchen {AIRLINE} {ZIEL} {MEILEN} statt …` auf miles-and-more.com.
+   Es gibt selten Treffer, also höchstens 3–5 Suchen.
+5. **Aktionen und Favoriten** (2 Suchen): `Award Flight Specials Aktion {MONAT} {JAHR}`. Trenne Einlöse-Aktionen von
+   Sammel-Aktionen und bezahlten Upgrades; nur Einlöse-Aktionen gehören hierher.
+6. **Barpreise** (1 Suche je übernommenem Angebot): `{VON} {NACH} Hin- und Rückflug {KLASSE} {REISEMONAT} {JAHR} Preis`.
+   Ein „ab“-Preis ohne Klasse und Reiseart zählt nicht, dann `cashPrice: null`.
+
+Erfahrungswerte:
+- Nach etwa 25 Suchen wiederholen sich die Ergebnisse. Brich dann ab.
+- **Suchzusammenfassungen vermischen Monate.** Sie stellen zum Beispiel September-Angebote als „Oktober“ dar.
+  Belastbar ist nur ein ausdrücklich genanntes Buchungs-Enddatum.
+- Am 1. eines Monats ist die neue Liste oft noch nirgends veröffentlicht. Findest du nur Vormonatsdaten,
+  melde das in `message` und übernimm nichts.
+- Nicht lohnend: Snippets von Airline-Seiten, loungerocker, smarttripz, mileguy, vielfliegertreff, flyertalk
+  (veraltet oder allgemein), Varianten mit dem Folgemonat, US-Datumsformat.
+
 ## Ablauf
 
 1. `node scripts/ai-run-start.mjs` ausführen. Es setzt die Zähler zurück und zeigt Quellen, Bestand und offene Aufgaben.
