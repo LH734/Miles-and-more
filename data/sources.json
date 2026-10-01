@@ -7,7 +7,7 @@
       "type": "primary",
       "url": "https://www.miles-and-more.com/de/de/program/flight-benefits/award-flight-specials/mileage-bargains.html",
       "status": "error",
-      "lastAttempt": "2026-10-01T08:14:00.631Z",
+      "lastAttempt": "2026-10-01T08:21:25.818Z",
       "lastSuccess": null,
       "robots": {
         "allowed": true,
@@ -21,7 +21,7 @@
       "type": "primary",
       "url": "https://www.miles-and-more.com/de/de/program/flight-benefits/award-flights.html",
       "status": "error",
-      "lastAttempt": "2026-10-01T08:14:00.631Z",
+      "lastAttempt": "2026-10-01T08:21:25.818Z",
       "lastSuccess": null,
       "robots": {
         "allowed": true,
@@ -35,7 +35,7 @@
       "type": "primary",
       "url": "https://www.miles-and-more.com/de/de/program/flight-benefits/award-flight-specials.html",
       "status": "error",
-      "lastAttempt": "2026-10-01T08:14:00.631Z",
+      "lastAttempt": "2026-10-01T08:21:25.818Z",
       "lastSuccess": null,
       "robots": {
         "allowed": true,
@@ -63,8 +63,8 @@
       "type": "blog",
       "url": "https://meilenoptimieren.com/miles-and-more-meilenschnaeppchen-angebote/",
       "status": "ok",
-      "lastAttempt": "2026-10-01T08:14:00.631Z",
-      "lastSuccess": "2026-10-01T08:14:00.631Z",
+      "lastAttempt": "2026-10-01T08:21:25.818Z",
+      "lastSuccess": "2026-10-01T08:21:25.818Z",
       "robots": {
         "allowed": true,
         "checkedAt": "2026-10-01"
@@ -77,7 +77,7 @@
       "type": "blog",
       "url": "https://reisetopia.de/meilenschnaeppchen/",
       "status": "error",
-      "lastAttempt": "2026-10-01T08:14:00.631Z",
+      "lastAttempt": "2026-10-01T08:21:25.818Z",
       "lastSuccess": null,
       "robots": {
         "allowed": true,

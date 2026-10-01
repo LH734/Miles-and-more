@@ -6,6 +6,119 @@
       "offerType": "meilenschnaeppchen",
       "sourceId": "blog-meilenoptimieren",
       "airline": {
+        "code": "EW",
+        "name": "Eurowings"
+      },
+      "origin": {
+        "iata": null,
+        "label": "Deutschland (Abflughafen laut Blog nicht genannt)",
+        "country": "DE"
+      },
+      "destination": {
+        "iata": "DXB",
+        "city": "Dubai",
+        "country": "AE",
+        "countryName": "Vereinigte Arabische Emirate",
+        "region": "Naher Osten"
+      },
+      "tripType": "roundtrip",
+      "cabin": "business",
+      "miles": 43000,
+      "standardMiles": null,
+      "copay": null,
+      "cashPrice": null,
+      "bookingPeriod": {
+        "from": "2026-10-01",
+        "to": "2026-10-31",
+        "toExplicit": true
+      },
+      "travelPeriod": {
+        "from": "2026-11-15",
+        "to": "2026-12-31"
+      },
+      "sources": [
+        {
+          "type": "blog",
+          "name": "meilenoptimieren.com",
+          "url": "https://meilenoptimieren.com/miles-and-more-meilenschnaeppchen-angebote/",
+          "retrievedAt": "2026-10-01"
+        }
+      ],
+      "verification": {
+        "primaryConfirmed": false
+      },
+      "notes": "Zuzahlung im Blog nicht beziffert; Primärquelle gesperrt (403).",
+      "id": "blog-meilenoptimieren:flight:ew:de*:dxb:business:roundtrip:2026-10-31",
+      "firstSeen": "2026-10-01",
+      "lastConfirmed": "2026-10-01"
+    },
+    {
+      "category": "flight",
+      "offerType": "meilenschnaeppchen",
+      "sourceId": "blog-meilenoptimieren",
+      "airline": {
+        "code": "LO",
+        "name": "LOT Polish Airlines"
+      },
+      "origin": {
+        "iata": "WAW",
+        "city": "Warschau",
+        "country": "PL"
+      },
+      "destination": {
+        "iata": "FCO",
+        "city": "Rom",
+        "country": "IT",
+        "countryName": "Italien",
+        "region": "Europa"
+      },
+      "tripType": "roundtrip",
+      "cabin": "business",
+      "miles": 25000,
+      "standardMiles": null,
+      "copay": null,
+      "cashPrice": {
+        "amount": 464,
+        "currency": "EUR",
+        "approx": true,
+        "tripType": "roundtrip",
+        "cabin": "business",
+        "source": {
+          "name": "Momondo (WAW–Rom, LOT Business, 5.–6.12.)",
+          "url": "https://www.momondo.com/flights/Business-Class-United-States-US0/Warsaw-Frederic-Chopin-WAW.bc.ksp"
+        },
+        "retrievedAt": "2026-10-01"
+      },
+      "bookingPeriod": {
+        "from": "2026-10-01",
+        "to": "2026-10-31",
+        "toExplicit": true
+      },
+      "travelPeriod": {
+        "from": "2026-11-01",
+        "to": "2026-12-31"
+      },
+      "sources": [
+        {
+          "type": "blog",
+          "name": "meilenoptimieren.com",
+          "url": "https://meilenoptimieren.com/miles-and-more-meilenschnaeppchen-angebote/",
+          "retrievedAt": "2026-10-01"
+        }
+      ],
+      "verification": {
+        "primaryConfirmed": false
+      },
+      "notes": "Zuzahlung im Blog nicht beziffert; Primärquelle gesperrt (403).",
+      "id": "blog-meilenoptimieren:flight:lo:waw:fco:business:roundtrip:2026-10-31",
+      "firstSeen": "2026-10-01",
+      "lastConfirmed": "2026-10-01"
+    },
+    {
+      "category": "flight",
+      "offerType": "meilenschnaeppchen",
+      "sourceId": "blog-meilenoptimieren",
+      "airline": {
         "code": "LO",
         "name": "LOT Polish Airlines"
       },
@@ -40,7 +153,10 @@
         "to": "2026-10-31",
         "toExplicit": true
       },
-      "travelPeriod": null,
+      "travelPeriod": {
+        "from": "2026-11-01",
+        "to": "2026-12-31"
+      },
       "sources": [
         {
           "type": "blog",
@@ -52,7 +168,7 @@
       "verification": {
         "primaryConfirmed": false
       },
-      "notes": "Reisezeitraum in den Quellen widersprüchlich, daher offen; Primärquelle gesperrt.",
+      "notes": "Primärquelle gesperrt (403); Reisezeitraum laut Blog.",
       "id": "blog-meilenoptimieren:flight:lo:waw:jfk:business:roundtrip:2026-10-31",
       "firstSeen": "2026-10-01",
       "lastConfirmed": "2026-10-01"
@@ -96,7 +212,10 @@
         "to": "2026-10-31",
         "toExplicit": true
       },
-      "travelPeriod": null,
+      "travelPeriod": {
+        "from": "2027-01-15",
+        "to": "2027-02-28"
+      },
       "sources": [
         {
           "type": "blog",
@@ -108,7 +227,7 @@
       "verification": {
         "primaryConfirmed": false
       },
-      "notes": "Reisezeitraum in den Quellen widersprüchlich, daher offen; Primärquelle gesperrt.",
+      "notes": "Primärquelle gesperrt (403); Reisezeitraum laut Blog.",
       "id": "blog-meilenoptimieren:flight:sn:bru:jfk:business:roundtrip:2026-10-31",
       "firstSeen": "2026-10-01",
       "lastConfirmed": "2026-10-01"

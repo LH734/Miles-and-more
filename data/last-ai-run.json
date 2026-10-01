@@ -1,29 +1,20 @@
 {
-  "at": "2026-10-01T08:14:00.631Z",
+  "at": "2026-10-01T08:21:25.818Z",
   "model": "claude-sonnet-5-5",
-  "searchesUsed": 1,
-  "fetchesUsed": 3,
+  "searchesUsed": 7,
+  "fetchesUsed": 5,
   "searchLimit": 40,
-  "added": 2,
+  "added": 0,
   "changed": 0,
   "removed": 0,
   "rejected": 0,
-  "discarded": 1,
+  "discarded": 0,
   "details": {
-    "added": [
-      "blog-meilenoptimieren:flight:sn:bru:jfk:business:roundtrip:2026-10-31",
-      "blog-meilenoptimieren:flight:lo:waw:jfk:business:roundtrip:2026-10-31"
-    ],
+    "added": [],
     "changed": [],
     "removed": [],
-    "unchanged": 0,
+    "unchanged": 4,
     "rejected": [],
-    "discarded": [
-      {
-        "title": "Kurzstrecken-Business 20.000–25.000 und Economy 12.000 Meilen (Eurowings, ITA, Luxair, Croatia)",
-        "url": "https://meilenoptimieren.com/miles-and-more-meilenschnaeppchen-angebote/",
-        "reason": "Nur pauschale Angaben ohne Ziel, Airline und Abflughafen."
-      }
-    ]
+    "discarded": []
   }
 }
