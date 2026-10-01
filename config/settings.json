@@ -1,0 +1,57 @@
+{
+  "_hinweis": "Alle Einstellungen des Trackers. Nach Änderungen einfach committen – die Seite wird beim nächsten Lauf neu gebaut.",
+  "timezone": "Europe/Berlin",
+  "ai": {
+    "_hinweis": "Einstellungen für den KI-Lauf (/meilen-update bzw. GitHub-Workflow 'KI-Lauf').",
+    "model": "claude-sonnet-5-5",
+    "compareModel": "claude-haiku-4-5-20251001",
+    "maxSearchesPerRun": 40,
+    "maxFetchesPerRun": 60,
+    "priceMaxAgeDays": 30,
+    "robotsRecheckDays": 90,
+    "tokenExpiresOn": null
+  },
+  "value": {
+    "_hinweis": "Wert pro Meile = (Barpreis − Zuzahlung) / Meilen, in Euro. Werte über plausibilityMax werden markiert.",
+    "currency": "EUR",
+    "plausibilityMax": 0.15,
+    "filterThresholds": [0.02, 0.03, 0.04, 0.05, 0.06]
+  },
+  "relevance": {
+    "_hinweis": "Relevanz 1–5 = gewichteter Durchschnitt der Teilnoten (jeweils 1–5), gerundet. Je Teilnote gilt die erste passende Stufe von oben.",
+    "weights": { "valuePerMile": 0.6, "copay": 0.25, "remainingDays": 0.15 },
+    "valuePerMile": {
+      "_hinweis": "Note, wenn Wert/Meile mindestens 'min' Euro beträgt.",
+      "steps": [
+        { "min": 0.06, "score": 5 },
+        { "min": 0.045, "score": 4 },
+        { "min": 0.03, "score": 3 },
+        { "min": 0.015, "score": 2 },
+        { "min": -1000, "score": 1 }
+      ],
+      "unknownScore": 2
+    },
+    "copay": {
+      "_hinweis": "Note, wenn die Zuzahlung höchstens 'max' Euro beträgt.",
+      "steps": [
+        { "max": 50, "score": 5 },
+        { "max": 150, "score": 4 },
+        { "max": 300, "score": 3 },
+        { "max": 600, "score": 2 },
+        { "max": 1000000, "score": 1 }
+      ],
+      "unknownScore": 2
+    },
+    "remainingDays": {
+      "_hinweis": "Note nach Tagen bis 'Buchbar bis'. Viel Restzeit = entspannt buchbar. Ohne Enddatum gilt openEndScore.",
+      "steps": [
+        { "min": 21, "score": 5 },
+        { "min": 14, "score": 4 },
+        { "min": 7, "score": 3 },
+        { "min": 3, "score": 2 },
+        { "min": 0, "score": 1 }
+      ],
+      "openEndScore": 4
+    }
+  }
+}

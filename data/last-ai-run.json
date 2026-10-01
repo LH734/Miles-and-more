@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-01T05:38:51.746Z",
+  "model": "claude-sonnet-5-5",
+  "searchesUsed": 5,
+  "fetchesUsed": null,
+  "searchLimit": 40,
+  "added": 0,
+  "changed": 0,
+  "removed": 0,
+  "rejected": 0,
+  "discarded": 4,
+  "details": {
+    "added": [],
+    "changed": [],
+    "removed": [],
+    "unchanged": 0,
+    "rejected": [],
+    "discarded": [
+      {
+        "title": "Brussels Airlines Meilenschnäppchen September 2026 (Business JFK/IAD 61.000 Meilen, Kurzstrecke 25.000)",
+        "url": "https://youhavebeenupgraded.boardingarea.com/2026/09/brussels-miles-and-more-meilenschnaeppchen-september-2026/",
+        "reason": "Buchungszeitraum September 2026, am 2026-10-01 abgelaufen; kein Oktober-Angebot bestätigt."
+      },
+      {
+        "title": "Miles & More Meilenschnäppchen September 2026",
+        "url": "https://meilenoptimieren.com/miles-and-more-meilenschnaeppchen-angebote/",
+        "reason": "Blog, September-Angebote; keine Primärbestätigung und kein Oktober-Buchungszeitraum mit Enddatum sichtbar."
+      },
+      {
+        "title": "Discover Airlines Business Punta Cana 66.000 Meilen + 709 EUR",
+        "url": "https://travel-dealz.de/deal/milesandmore-meilenschnaeppchen/",
+        "reason": "Buchungszeitraum nicht ersichtlich, nicht an Primärquelle bestätigt."
+      },
+      {
+        "title": "Miles & More Meilenschnäppchen: Alle Infos & aktuelle Ziele 2026",
+        "url": "https://reisetopia.de/meilenschnaeppchen/",
+        "reason": "Übersichtsseite; im Suchergebnis keine konkreten, bestätigten Oktober-Angebote mit Buchungszeitraum."
+      }
+    ]
+  }
+}

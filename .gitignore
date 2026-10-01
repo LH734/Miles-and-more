@@ -1,0 +1,6 @@
+node_modules/
+_site/
+.ai-run/
+data/incoming/*.json
+!data/incoming/.gitkeep
+.DS_Store

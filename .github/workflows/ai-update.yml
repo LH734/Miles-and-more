@@ -1,0 +1,135 @@
+# Lauf B: KI-Lauf mit Claude Code über dein Claude-Abo (Secret CLAUDE_CODE_OAUTH_TOKEN).
+# Automatisch am Monatsersten und jederzeit von Hand (Actions → KI-Lauf → Run workflow).
+name: KI-Lauf
+
+on:
+  schedule:
+    - cron: '43 4 1 * *' # am 1. jedes Monats, 04:43 UTC
+  workflow_dispatch:
+    inputs:
+      model:
+        description: 'Modell (leer = aus config/settings.json)'
+        required: false
+        default: ''
+      max_searches:
+        description: 'Max. Websuchen (leer = aus config/settings.json)'
+        required: false
+        default: ''
+      compare_model:
+        description: 'Vergleichsmodell, z. B. claude-haiku-4-5-20251001 (leer = kein Vergleich)'
+        required: false
+        default: ''
+
+concurrency:
+  group: data-update
+  cancel-in-progress: false
+
+jobs:
+  ai:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: write
+    env:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      INPUT_MODEL: ${{ inputs.model }}
+      INPUT_MAX: ${{ inputs.max_searches }}
+      INPUT_COMPARE: ${{ inputs.compare_model }}
+      ALLOWED_TOOLS: 'WebSearch,WebFetch,Read,Write,Edit,Glob,Grep,Bash(node scripts/*),Bash(npm test),Bash(npm run build)'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Token prüfen
+        run: |
+          if [ -z "$CLAUDE_CODE_OAUTH_TOKEN" ]; then
+            echo "::error::Secret CLAUDE_CODE_OAUTH_TOKEN fehlt. Siehe ANLEITUNG.md, Schritt 5."
+            exit 1
+          fi
+
+      - name: Claude Code installieren
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Einstellungen lesen
+        run: |
+          MODEL="${INPUT_MODEL:-$(node -p "require('./config/settings.json').ai.model")}"
+          MAX="${INPUT_MAX:-$(node -p "require('./config/settings.json').ai.maxSearchesPerRun")}"
+          FIRST_RUN=$(node -p "require('./data/meta.json').lastAiRun ? 'nein' : 'ja'")
+          COMPARE="$INPUT_COMPARE"
+          if [ -z "$COMPARE" ] && [ "$FIRST_RUN" = "ja" ]; then
+            COMPARE=$(node -p "require('./config/settings.json').ai.compareModel")
+          fi
+          echo "MODEL=$MODEL" >> "$GITHUB_ENV"
+          echo "MAX_SEARCHES=$MAX" >> "$GITHUB_ENV"
+          echo "COMPARE_MODEL=$COMPARE" >> "$GITHUB_ENV"
+          echo "Modell: $MODEL, max. Websuchen: $MAX, Vergleich: ${COMPARE:-keiner}"
+
+      - name: KI-Lauf
+        run: |
+          mkdir -p .ai-run
+          claude -p "Führe die Anweisung in ai/ANWEISUNG.md vollständig aus. MODUS: ci. AUSGABE: data/incoming/update.json. Trage als model \"$MODEL\" ein." \
+            --model "$MODEL" \
+            --max-turns 120 \
+            --allowedTools "$ALLOWED_TOOLS" \
+            --output-format json > .ai-run/claude-main.json
+          node scripts/ai-run-end.mjs | tee .ai-run/searches-main.txt
+
+      - name: Prüfen und Seite testen
+        run: |
+          npm test
+          node scripts/build.mjs
+
+      - name: Änderungen speichern
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "KI-Lauf ($MODEL): $(date -u +%F)"
+          git push
+
+      - name: Vergleichslauf
+        if: env.COMPARE_MODEL != ''
+        continue-on-error: true
+        run: |
+          claude -p "Führe die Schritte 1 bis 5 der Anweisung in ai/ANWEISUNG.md aus. MODUS: ci. AUSGABE: data/incoming/compare.json. Trage als model \"$COMPARE_MODEL\" ein. Führe apply-update NICHT aus und ändere keine anderen Dateien." \
+            --model "$COMPARE_MODEL" \
+            --max-turns 120 \
+            --allowedTools "$ALLOWED_TOOLS" \
+            --output-format json > .ai-run/claude-compare.json
+          node scripts/ai-run-end.mjs | tee .ai-run/searches-compare.txt
+          # Der Vergleichslauf darf keine Daten ändern
+          git checkout -- data config
+
+      - name: Zusammenfassung
+        if: always()
+        run: |
+          {
+            echo "## KI-Lauf mit $MODEL"
+            [ -f data/last-ai-run.json ] && node -e "const r=require('./data/last-ai-run.json');console.log('Neu: '+r.added+', geändert: '+r.changed+', entfernt: '+r.removed+', verworfen: '+r.discarded+', abgelehnt: '+r.rejected)"
+            [ -f .ai-run/searches-main.txt ] && cat .ai-run/searches-main.txt
+            if [ -f data/incoming/compare.json ] && [ -f data/incoming/update.json ]; then
+              node scripts/compare.mjs data/incoming/update.json data/incoming/compare.json
+              [ -f .ai-run/searches-compare.txt ] && echo "Vergleichslauf: $(cat .ai-run/searches-compare.txt | head -1)"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Rohdaten aufbewahren
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ki-lauf-${{ github.run_id }}
+          path: |
+            data/incoming/*.json
+            .ai-run/
+          include-hidden-files: true
+          retention-days: 30
+
+  deploy:
+    needs: ai
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml

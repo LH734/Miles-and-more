@@ -1,0 +1,11 @@
+{
+  "_hinweis": "Feste Prämientabelle (Standardraten) für Award Flights mit Partner-Airlines. Werte nur aus der offiziellen Miles-&-More-Tabelle übernehmen; Stand-Datum immer mitpflegen. Leere Tabelle = noch nicht erfasst.",
+  "stand": null,
+  "source": {
+    "name": "Miles & More – Award-Flight-Tabelle (PDF)",
+    "url": "https://www.miles-and-more.com/content/dam/mmg/touchpoint/web/pdf/Flight_Awards_EN.pdf"
+  },
+  "tripType": "oneway",
+  "note": null,
+  "rows": []
+}

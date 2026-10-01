@@ -1,0 +1,18 @@
+{
+  "lastDailyRun": {
+    "at": "2026-10-01T05:38:51.806Z",
+    "removedExpired": 0
+  },
+  "lastAiRun": {
+    "at": "2026-10-01T05:38:51.746Z",
+    "model": "claude-sonnet-5-5",
+    "searchesUsed": 5,
+    "fetchesUsed": null,
+    "searchLimit": 40,
+    "added": 0,
+    "changed": 0,
+    "removed": 0,
+    "rejected": 0,
+    "discarded": 4
+  }
+}

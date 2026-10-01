@@ -1,0 +1,89 @@
+{
+  "_hinweis": "Quellen in Prioritätsreihenfolge. status/lastSuccess/lastAttempt werden von den Läufen gepflegt.",
+  "sources": [
+    {
+      "id": "mm-meilenschnaeppchen",
+      "name": "Miles & More – Meilenschnäppchen",
+      "type": "primary",
+      "url": "https://www.miles-and-more.com/de/de/program/flight-benefits/award-flight-specials/mileage-bargains.html",
+      "status": "error",
+      "lastAttempt": "2026-10-01T05:38:51.746Z",
+      "lastSuccess": null,
+      "robots": {
+        "allowed": null,
+        "checkedAt": null
+      },
+      "message": "Erstlauf aus gesperrter Cloud-Umgebung, nur Websuche möglich: Seite per Suche gefunden, aber nur Beschreibungstext ohne konkrete Oktober-2026-Angebote (Strecken/Meilen/Buchungszeitraum) im Suchergebnis sichtbar."
+    },
+    {
+      "id": "mm-award-favoriten",
+      "name": "Miles & More – Award Flight Favoriten",
+      "type": "primary",
+      "url": "https://www.miles-and-more.com/de/de/program/flight-benefits/award-flights.html",
+      "status": "error",
+      "lastAttempt": "2026-10-01T05:38:51.746Z",
+      "lastSuccess": null,
+      "robots": {
+        "allowed": null,
+        "checkedAt": null
+      },
+      "message": "Erstlauf aus gesperrter Cloud-Umgebung, nur Websuche möglich: Seite gefunden, nur allgemeine Beschreibung; keine konkreten befristeten Angebote mit Buchungszeitraum sichtbar."
+    },
+    {
+      "id": "mm-aktionen",
+      "name": "Miles & More – Award Flight Specials / befristete Aktionen",
+      "type": "primary",
+      "url": "https://www.miles-and-more.com/de/de/program/flight-benefits/award-flight-specials.html",
+      "status": "error",
+      "lastAttempt": "2026-10-01T05:38:51.746Z",
+      "lastSuccess": null,
+      "robots": {
+        "allowed": null,
+        "checkedAt": null
+      },
+      "message": "Erstlauf aus gesperrter Cloud-Umgebung, nur Websuche möglich: Nur allgemeine Infos zu Fly Smart, 3-Regionen, World Award; keine befristeten Aktionen mit Daten gefunden."
+    },
+    {
+      "id": "award-chart",
+      "name": "Prämientabelle Partner-Airlines (gepflegte JSON-Datei)",
+      "type": "chart",
+      "url": "https://www.miles-and-more.com/content/dam/mmg/touchpoint/web/pdf/Flight_Awards_EN.pdf",
+      "status": "not-checked",
+      "lastAttempt": null,
+      "lastSuccess": null,
+      "robots": {
+        "allowed": null,
+        "checkedAt": null
+      },
+      "message": null
+    },
+    {
+      "id": "blog-meilenoptimieren",
+      "name": "meilenoptimieren.com (nur Hinweisgeber)",
+      "type": "blog",
+      "url": "https://meilenoptimieren.com/miles-and-more-meilenschnaeppchen-angebote/",
+      "status": "error",
+      "lastAttempt": "2026-10-01T05:38:51.746Z",
+      "lastSuccess": null,
+      "robots": {
+        "allowed": null,
+        "checkedAt": null
+      },
+      "message": "Erstlauf aus gesperrter Cloud-Umgebung, nur Websuche möglich: Treffer nur zu 'Meilenschnäppchen September 2026' (Buchungszeitraum September, abgelaufen); Oktober-Inhalte nicht sichtbar."
+    },
+    {
+      "id": "blog-reisetopia",
+      "name": "reisetopia.de (nur Hinweisgeber)",
+      "type": "blog",
+      "url": "https://reisetopia.de/meilenschnaeppchen/",
+      "status": "error",
+      "lastAttempt": "2026-10-01T05:38:51.746Z",
+      "lastSuccess": null,
+      "robots": {
+        "allowed": null,
+        "checkedAt": null
+      },
+      "message": "Erstlauf aus gesperrter Cloud-Umgebung, nur Websuche möglich: Treffer nur allgemeine Übersicht und ältere Monate; keine bestätigten Oktober-2026-Details."
+    }
+  ]
+}

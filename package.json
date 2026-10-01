@@ -1,0 +1,16 @@
+{
+  "name": "meilen-einloese-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Privater Tracker für aktuell buchbare Miles-&-More-Einlöse-Angebote (statische Seite für GitHub Pages).",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "build": "node scripts/build.mjs",
+    "daily": "node scripts/daily.mjs",
+    "apply": "node scripts/apply-update.mjs",
+    "compare": "node scripts/compare.mjs",
+    "serve": "node scripts/serve.mjs"
+  }
+}
