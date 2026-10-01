@@ -71,7 +71,8 @@ Der KI-Lauf auf GitHub nutzt dein Claude-Abo und rechnet nicht über die API ab.
 3. Nach dem Lauf (5–20 Minuten) auf den Lauf klicken. Unter **Summary** stehen die Ergebnisse,
    die Zahl der Websuchen und die Tabelle **Modellvergleich**.
 
-Danach läuft der KI-Lauf automatisch **am 1. jedes Monats** (04:43 Uhr UTC, also 06:43 Uhr MESZ bzw. 05:43 Uhr MEZ).
+Danach läuft der KI-Lauf automatisch **am 3. jedes Monats** (04:43 Uhr UTC, also 06:43 Uhr MESZ bzw. 05:43 Uhr MEZ).
+Am 1. ist die neue Meilenschnäppchen-Liste oft noch nicht veröffentlicht, deshalb der 3.
 
 ## 8. KI-Lauf lokal auf dem Mac (`/meilen-update`)
 
@@ -115,7 +116,7 @@ Alles steht in **`config/settings.json`**. Du kannst die Datei direkt auf GitHub
 | `relevance` | Formel für die Relevanz 1–5: Gewichte und Stufen für Wert/Meile, Zuzahlung und Restlaufzeit |
 
 **Zeitpläne** ändern: in `.github/workflows/daily.yml` bzw. `ai-update.yml` die Zeile `cron:`.
-Format: `Minute Stunde Tag Monat Wochentag` in UTC. Beispiel: `'43 4 1 * *'` = am 1. jedes Monats um 04:43 UTC.
+Format: `Minute Stunde Tag Monat Wochentag` in UTC. Beispiel: `'43 4 3 * *'` = am 3. jedes Monats um 04:43 UTC.
 
 ## 10. Was wo liegt
 
