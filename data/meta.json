@@ -4,10 +4,10 @@
     "removedExpired": 0
   },
   "lastAiRun": {
-    "at": "2026-10-01T08:21:25.818Z",
+    "at": "2026-10-03T10:04:14.898Z",
     "model": "claude-sonnet-5-5",
     "searchesUsed": 7,
-    "fetchesUsed": 5,
+    "fetchesUsed": 8,
     "searchLimit": 40,
     "added": 0,
     "changed": 0,

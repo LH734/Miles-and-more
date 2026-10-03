@@ -50,7 +50,7 @@
       "notes": "Zuzahlung im Blog nicht beziffert; Primärquelle gesperrt (403).",
       "id": "blog-meilenoptimieren:flight:ew:de*:dxb:business:roundtrip:2026-10-31",
       "firstSeen": "2026-10-01",
-      "lastConfirmed": "2026-10-01"
+      "lastConfirmed": "2026-10-03"
     },
     {
       "category": "flight",
@@ -112,7 +112,7 @@
       "notes": "Zuzahlung im Blog nicht beziffert; Primärquelle gesperrt (403).",
       "id": "blog-meilenoptimieren:flight:lo:waw:fco:business:roundtrip:2026-10-31",
       "firstSeen": "2026-10-01",
-      "lastConfirmed": "2026-10-01"
+      "lastConfirmed": "2026-10-03"
     },
     {
       "category": "flight",
@@ -171,7 +171,7 @@
       "notes": "Primärquelle gesperrt (403); Reisezeitraum laut Blog.",
       "id": "blog-meilenoptimieren:flight:lo:waw:jfk:business:roundtrip:2026-10-31",
       "firstSeen": "2026-10-01",
-      "lastConfirmed": "2026-10-01"
+      "lastConfirmed": "2026-10-03"
     },
     {
       "category": "flight",
@@ -230,7 +230,7 @@
       "notes": "Primärquelle gesperrt (403); Reisezeitraum laut Blog.",
       "id": "blog-meilenoptimieren:flight:sn:bru:jfk:business:roundtrip:2026-10-31",
       "firstSeen": "2026-10-01",
-      "lastConfirmed": "2026-10-01"
+      "lastConfirmed": "2026-10-03"
     }
   ]
 }

@@ -7,11 +7,11 @@
       "type": "primary",
       "url": "https://www.miles-and-more.com/de/de/program/flight-benefits/award-flight-specials/mileage-bargains.html",
       "status": "error",
-      "lastAttempt": "2026-10-01T08:21:25.818Z",
+      "lastAttempt": "2026-10-03T10:04:14.898Z",
       "lastSuccess": null,
       "robots": {
         "allowed": true,
-        "checkedAt": "2026-10-01"
+        "checkedAt": "2026-10-03"
       },
       "message": "HTTP 403 (Bot-Schutz)"
     },
@@ -21,11 +21,11 @@
       "type": "primary",
       "url": "https://www.miles-and-more.com/de/de/program/flight-benefits/award-flights.html",
       "status": "error",
-      "lastAttempt": "2026-10-01T08:21:25.818Z",
+      "lastAttempt": "2026-10-03T10:04:14.898Z",
       "lastSuccess": null,
       "robots": {
         "allowed": true,
-        "checkedAt": "2026-10-01"
+        "checkedAt": "2026-10-03"
       },
       "message": "HTTP 403 (Bot-Schutz)"
     },
@@ -35,11 +35,11 @@
       "type": "primary",
       "url": "https://www.miles-and-more.com/de/de/program/flight-benefits/award-flight-specials.html",
       "status": "error",
-      "lastAttempt": "2026-10-01T08:21:25.818Z",
+      "lastAttempt": "2026-10-03T10:04:14.898Z",
       "lastSuccess": null,
       "robots": {
         "allowed": true,
-        "checkedAt": "2026-10-01"
+        "checkedAt": "2026-10-03"
       },
       "message": "HTTP 403 (Bot-Schutz)"
     },
@@ -48,14 +48,14 @@
       "name": "Prämientabelle Partner-Airlines (gepflegte JSON-Datei)",
       "type": "chart",
       "url": "https://www.miles-and-more.com/content/dam/mmg/touchpoint/web/pdf/Flight_Awards_EN.pdf",
-      "status": "not-checked",
-      "lastAttempt": null,
+      "status": "error",
+      "lastAttempt": "2026-10-03T10:04:14.898Z",
       "lastSuccess": null,
       "robots": {
-        "allowed": null,
-        "checkedAt": null
+        "allowed": true,
+        "checkedAt": "2026-10-03"
       },
-      "message": null
+      "message": "PDF nicht als Text lesbar (kein pdftotext)"
     },
     {
       "id": "blog-meilenoptimieren",
@@ -63,11 +63,11 @@
       "type": "blog",
       "url": "https://meilenoptimieren.com/miles-and-more-meilenschnaeppchen-angebote/",
       "status": "ok",
-      "lastAttempt": "2026-10-01T08:21:25.818Z",
-      "lastSuccess": "2026-10-01T08:21:25.818Z",
+      "lastAttempt": "2026-10-03T10:04:14.898Z",
+      "lastSuccess": "2026-10-03T10:04:14.898Z",
       "robots": {
         "allowed": true,
-        "checkedAt": "2026-10-01"
+        "checkedAt": "2026-10-03"
       },
       "message": null
     },
@@ -77,11 +77,11 @@
       "type": "blog",
       "url": "https://reisetopia.de/meilenschnaeppchen/",
       "status": "error",
-      "lastAttempt": "2026-10-01T08:21:25.818Z",
+      "lastAttempt": "2026-10-03T10:04:14.898Z",
       "lastSuccess": null,
       "robots": {
         "allowed": true,
-        "checkedAt": "2026-10-01"
+        "checkedAt": "2026-10-03"
       },
       "message": "HTTP 403 (Bot-Schutz)"
     }
